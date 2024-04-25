@@ -3,7 +3,7 @@ require('dotenv').config();
 const configViewEngine = require('./config/viewEngine');
 const webRouter = require('./routes/web');
 const connection = require('./config/database');
-const mongoose = require('mongoose');
+
 
 
 
@@ -23,12 +23,7 @@ configViewEngine(app);
 app.use('/', webRouter);
 
 
-const kittySchema = new mongoose.Schema({
-    name: String
-})
-const Kitten = mongoose.model("Kitten", kittySchema);
-const cat = new Kitten({ name: 'Silence' });
-cat.save();
+
 
 
 (async () => {
