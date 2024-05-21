@@ -1,7 +1,8 @@
 const express = require('express');
 require('dotenv').config();
 const configViewEngine = require('./config/viewEngine');
-const webRouter = require('./routes/web');
+const webRoutes = require('./routes/web');
+const apiRoutes = require('./routes/api');
 const connection = require('./config/database');
 
 
@@ -20,7 +21,8 @@ const hostname = process.env.hostname;
 configViewEngine(app);
 
 //route
-app.use('/', webRouter);
+app.use('/', webRoutes);
+app.use('/v1/api/', apiRoutes);
 
 
 
