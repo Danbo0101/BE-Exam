@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const { uploadSingleFile } = require('../services/fileService');
+
 
 
 const getUsers = async (req, res) => {
@@ -50,10 +52,25 @@ const deleteUser = async (req, res) => {
     })
 }
 
+const postUploadSignleFile = async (req, res) => {
+
+
+
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('No file were uploaded.');
+    }
+
+    let results = await uploadSingleFile(req.files.image);
+    console.log(results);
+
+    return res.send("ok signle");
+}
+
 
 module.exports = {
     getUsers,
     postCreateNewUser,
     putUpdateUser,
-    deleteUser
+    deleteUser,
+    postUploadSignleFile
 }

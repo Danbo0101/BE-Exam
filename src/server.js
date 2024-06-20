@@ -5,10 +5,14 @@ const webRoutes = require('./routes/web');
 const apiRoutes = require('./routes/api');
 const connection = require('./config/database');
 
-
+const fileUpload = require('express-fileupload');
 
 
 const app = express();
+
+
+//config fileUpload
+app.use(fileUpload());
 
 //config req.body
 app.use(express.json());
